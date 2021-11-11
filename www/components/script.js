@@ -27,7 +27,7 @@ window.onload = function(){
     document.querySelector("body").style.background = tema.body;
     document.querySelector("canvas").style.background = tema.canvas;
 
-    const botao = document.querySelectorAll(".seta");
+    const botao = document.querySelectorAll(".setinha");
     Array.prototype.filter.call(botao, function(botao){
       botao.style.color = tema.botao;
     })
@@ -38,7 +38,7 @@ window.onload = function(){
     document.querySelector("body").style.background = tema.body;
     document.querySelector("canvas").style.background = tema.canvas;
 
-    const botao = document.querySelectorAll(".seta");
+    const botao = document.querySelectorAll(".setinha");
     Array.prototype.filter.call(botao, function(botao){
       botao.style.color = tema.botao;
     })
