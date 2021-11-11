@@ -1,5 +1,48 @@
 window.onload = function(){
  inicioJogo();
+
+ //tema
+ function temas(){
+    let claro = {
+      canvas: "#FFF",
+      body: "#FFF",
+      botao: "#000"
+    }
+
+    localStorage.setItem("claro", JSON.stringify(claro));
+
+    let escuro = {
+      canvas: "#000",
+      body: "#000",
+      botao: "#FFF"
+    }
+
+    localStorage.setItem("escuro", JSON.stringify(escuro));
+  }
+
+  temas();
+
+  document.querySelector("#temaclaro").addEventListener("click", function(){
+    let tema = JSON.parse(localStorage.getItem("claro"));
+    document.querySelector("body").style.background = tema.body;
+    document.querySelector("canvas").style.background = tema.canvas;
+
+    const botao = document.querySelectorAll(".seta");
+    Array.prototype.filter.call(botao, function(botao){
+      botao.style.color = tema.botao;
+    })
+  });
+
+  document.querySelector("#temaescuro").addEventListener("click", function(){
+    let tema = JSON.parse(localStorage.getItem("escuro"));
+    document.querySelector("body").style.background = tema.body;
+    document.querySelector("canvas").style.background = tema.canvas;
+
+    const botao = document.querySelectorAll(".seta");
+    Array.prototype.filter.call(botao, function(botao){
+      botao.style.color = tema.botao;
+    })
+  });
  
  document.querySelector("#direita").addEventListener("click", function(){
  direita();
@@ -21,6 +64,7 @@ window.onload = function(){
  setTimeout(parar, 1000); 
  });
 }
+
  
 var personagemObj;
 var obstaculo = [];
@@ -29,7 +73,7 @@ var pontos;
 function inicioJogo(){
  areaJogo.start();
  personagemObj = new componente("#FFFF00",10,100,30,30);
- pontos = new componente("#000", 10,30,'Consolas','30px', 'texto');
+ pontos = new componente("FFFF00", 10,30,'Consolas','30px', 'texto');
  //obstaculo = new componente('green',150,80,120,10);
 }
  
@@ -163,3 +207,4 @@ function parar(){
  personagemObj.velocidadeX = 0;
  personagemObj.velocidadeY = 0;
 }
+
